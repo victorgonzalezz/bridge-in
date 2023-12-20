@@ -4,6 +4,7 @@ export default function Players() {
   return (
     <section>
       <h2>Players</h2>
+      
       <Link to='/'>
         Back Home
       </Link>
