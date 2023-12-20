@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom'
+import AllTeams from './AllTeams'
 
 export default function Teams() {
   return (
     <section>
-      <h2>Teams</h2>
+      <AllTeams />
         <Link to='/'>
         Back Home
         </Link>
