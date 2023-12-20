@@ -1,16 +1,24 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-
 import React from 'react';
+
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Teams from './pages/Teams';
+import Players from './pages/Players';
+import Home from './pages/Home';
 import Header from './components/Header';
-import Navigation from './components/Navigation';
-import MainContent from './components/MainContent';
 
 const App: React.FC = () => {
   return (
     <div>
-      <Header />
-      <Navigation />
-      <MainContent />
+      <BrowserRouter>
+        <Header />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="team" element={<Teams />} />
+          <Route path="player" element={<Players />} />
+        
+        </Routes>
+    </BrowserRouter>
     </div>
   );
 };
