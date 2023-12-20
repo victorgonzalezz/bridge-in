@@ -14,8 +14,8 @@ const App: React.FC = () => {
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="team" element={<Teams />} />
-          <Route path="player" element={<Players />} />
+          <Route path="teams" element={<Teams />} />
+          <Route path="players" element={<Players />} />
         
         </Routes>
     </BrowserRouter>

@@ -1,12 +1,31 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import './Navbar.css'
 
 const Navbar: React.FC = () => {
   return (
-    <nav className='navbar'>
-      <NavLink to='/'>Home</NavLink>
-      <NavLink to='/team'>Team</NavLink>
-      <NavLink to='/player'>Player</NavLink>
+    <nav className='navbar navbar-expand-md navbar bg-primary'>
+      <div className='navbar-nav mr-auto d-flex gap-4'>
+        <NavLink className='btn btn-primary' to='/'>Home</NavLink>
+        <div className="btn-group">
+          <button type="button" className="btn btn-primary">Teams</button>
+          <button type="button" className="btn btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+          </button>
+          <ul className="dropdown-menu">
+            <li><a className="dropdown-item" href="/teams">All Teams</a></li>
+          </ul>
+        </div>
+        <div className="btn-group">
+          <button type="button" className="btn btn-primary">Players</button>
+          <button type="button" className="btn btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+          </button>
+          <ul className="dropdown-menu">
+            <li><a className="dropdown-item" href="/players">All Players</a></li>
+          </ul>
+        </div>
+      </div>
+
+
     </nav>
   );
 };

@@ -6,7 +6,7 @@ const Home: React.FC = () => {
     <>
     <Navbar />
     <section>
-      <h4>Estamos na página Home. Ou seja, bem vindo</h4>
+        <h4>Estamos na página Home.</h4>
     </section>
     </>
     
