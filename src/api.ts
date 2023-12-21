@@ -1,18 +1,16 @@
 import axios from 'axios';
 
-interface Team {
+export interface Team {
   id: number;
   full_name: string;
 }
 
-interface Game {
+export interface Game {
   id: number;
   home_team: Team;
   visitor_team: Team;
   date: string;
 }
-
-
 
 const apiOptions = {
   headers: {
@@ -33,10 +31,23 @@ export const getAllTeams = async (): Promise<Team[]> => {
   }
 };
 
+export const getSpecificTeam = async (teamId: number): Promise<Team | null> => {
+  try {
+    const response = await axios.get(`https://free-nba.p.rapidapi.com/teams/${teamId}`, apiOptions );
+    console.log(response, 'oiii');
+    return response.data as Team;
+    
+    
+
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
+};
+
 export const getAllGames = async (): Promise<Game[]> => {
   try {
     const response = await axios.get('https://free-nba.p.rapidapi.com/games', apiOptions );
-    console.log(response, 'allGames');
     return response.data.data as Game[];
     
 
@@ -46,15 +57,13 @@ export const getAllGames = async (): Promise<Game[]> => {
   }
 };
 
-// export const getAllPlayers = async (id: number) => {
-
-//   try {
-//     const response = await axios.get(`https://free-nba.p.rapidapi.com/players/${id}`, apiOptions);
-//     // console.log(response, 'o');
-//     return response.data.data;
+export const getAllGamesSpecificTeam = async (idTeam: number): Promise<Game[]> => {
+  try {
+    const response = await axios.get('https://free-nba.p.rapidapi.com/games', {...apiOptions, params: { team_ids:[idTeam]}} );
+    return response.data.data as Game[];
     
-//   } catch (error) {
-//     console.error(error);
-//     return [];
-//   }
-// };
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
+};

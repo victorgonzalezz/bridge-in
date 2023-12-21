@@ -31,7 +31,7 @@ const AllTeams: React.FC = () => {
           <div key={team.id} className="col-md-4 mb-3">
             <div className="card">
               <div className="card-body">
-                <Link className="card-title" to={`/${team.id}`}>{team.full_name}</Link>
+                <Link className="card-title" to={`/teams/${team.id}`}>{team.full_name}</Link>
               </div>
             </div>
           </div>

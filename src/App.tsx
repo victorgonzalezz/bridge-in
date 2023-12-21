@@ -8,6 +8,7 @@ import Games from './pages/Games';
 // import AllPlayers from './pages/AllPlayers';
 import Teams from './pages/Teams';
 import Home from './components/Home';
+import SpecificTeam from './pages/SpecificTeam';
 
 const App: React.FC = () => {
   return (
@@ -16,10 +17,20 @@ const App: React.FC = () => {
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
+          {/* exercicio A */}
           <Route path="/teams" element={<Teams />} />
-          <Route path="/:id/players/:id" element={<Players />} />
+          {/* exercicio  B*/}
+          <Route path="/teams/:id/players" element={<Players />} />
+
+          {/* exercicio  C*/}
+
+          {/* <Route path="/teams/:id/players/:player_id" element={<StatsPlayers />} /> */}
+
+          {/* exercicio  D*/}
+
+          <Route path="/teams/:id" element={<SpecificTeam />} />
+
           <Route path="/games" element={<Games />} />
-          {/* <Route path="/:id" element={<AllPlayers />} /> */}
         </Routes>
       </BrowserRouter>
     </div>

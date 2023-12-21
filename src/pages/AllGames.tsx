@@ -1,27 +1,15 @@
-// AllGames.tsx
-
 import React, { useEffect, useState } from 'react';
-import { getAllGames } from '../api'; 
+import { Game, getAllGames } from '../api'; 
+import GameItem from './GameItem';
 
-interface Team {
-  full_name: string;
-}
-
-interface Game {
-  id: number;
-  home_team: Team;
-  visitor_team: Team;
-  date: string;
-}
 
 const AllGames: React.FC = () => {
   const [games, setGames] = useState<Game[]>([]);
-  console.log('cheguei')
 
   useEffect(() => {
-    const fetchData = async () => {
+      const fetchData = async () => {
       const gamesData = await getAllGames();
-      setGames(gamesData);
+        setGames(gamesData);
     };
 
     fetchData();
@@ -31,17 +19,15 @@ const AllGames: React.FC = () => {
   return (
     <div>
       <h2>All Games</h2>
-      <ul className="list-unstyled">
-        {games.map((game) => (
-          <li key={game.id}>
-            <p>
-              {game.home_team.full_name} vs {game.visitor_team.full_name} - {game.date}
-            </p>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-};
+        <div className='container d-flex justify-content-center'>
+        <ul className="list-unstyled">
+          {games.map((game) => (
+            <GameItem key={game.id} {...game} />
+            ))}
+          </ul>
+        </div>
+      </div>
+    );
+  };
 
 export default AllGames;
