@@ -23,6 +23,14 @@ const Navbar: React.FC = () => {
             <li><a className="dropdown-item" href="/players">All Players</a></li>
           </ul>
         </div>
+        <div className="btn-group">
+          <button type="button" className="btn btn-primary border border-end-0">Games</button>
+          <button type="button" className="btn btn-primary border border-start-0 dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+          </button>
+          <ul className="dropdown-menu">
+            <li><a className="dropdown-item" href="/games">All Games</a></li>
+          </ul>
+        </div>
       </div>
 
 

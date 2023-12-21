@@ -6,7 +6,7 @@ export default function Teams() {
     <section>
       <AllTeams />
         <Link to='/'>
-        Back Home
+        Back Home Page
         </Link>
     </section>
   )

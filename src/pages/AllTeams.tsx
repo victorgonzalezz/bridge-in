@@ -1,4 +1,3 @@
-// AllTeams.tsx
 
 import React, { useEffect, useState } from 'react';
 import { getAllTeams } from '../api';
