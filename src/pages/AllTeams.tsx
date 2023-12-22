@@ -21,24 +21,32 @@ const AllTeams: React.FC = () => {
 
   }, []);
 
+  function handleClick() {
+    console.log('cheguei?')
+  }
+
+
   return (
-    <div>
-      <div className='d-flex'>
-        <h2>All Teams</h2>
-      </div>
-      <div className="d-flex row">
-        {teams.map((team) => (
-          <div key={team.id} className="col-md-4 mb-3">
-            <div className="card">
-              <div className="card-body">
-                <Link className="card-title text-decoration-none fs-5 fw-medium" to={`/teams/${team.id}`}>{team.full_name}</Link>
+      <>
+        <h2 className='d-flex justify-content-center mt-4 mb-3'>All Teams</h2>
+          <div className="d-flex row m-2">
+            {teams.map((team) => (
+              <div key={team.id} className="col-md-4 mb-3 border border-1">
+                <div className="card-body">
+                  <Link
+                    className="card-title text-decoration-none fs-5 fw-medium"
+                    to={`/teams/${team.id}`}>{team.full_name}
+                  </Link>
+                </div>
+                <div className='d-flex gap-3' onClick={handleClick}>
+                  <Link className='text-decoration-none' to={''}>Profile</Link>
+                  <Link className='text-decoration-none' to={''}>Stats</Link>
+                </div>
               </div>
-            </div>
+            ))}
           </div>
-        ))}
-      </div>
-    </div>
-  );
-};
+      </>
+    );
+  };
 
 export default AllTeams;

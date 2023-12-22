@@ -6,14 +6,14 @@ import GameItem from './GameItem';
 
 const SpecificTeam: React.FC = () => {
   const { id } = useParams();
-  console.log(id, 'oi')
+  // console.log(id, 'oi')
   const [specificTeam, setSpecificTeam] = useState<Team | null>();
   const [games, setGames] = useState<Game[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
       const teamsData = await getSpecificTeam(Number(id));
-      console.log(teamsData, 'e aí')
+      // console.log(teamsData, 'e aí')
       setSpecificTeam(teamsData);
     };
 
@@ -33,6 +33,7 @@ const SpecificTeam: React.FC = () => {
 
   return (
     <div>
+      <h2 className='bg-gradient'>Get Specific Team</h2>
       <div className='d-flex justify-content-center mt-4 mb-3'>
         <h2>{specificTeam?.full_name}</h2>
       </div>

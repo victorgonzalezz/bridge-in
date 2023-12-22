@@ -22,7 +22,7 @@ const apiOptions = {
 export const getAllTeams = async (): Promise<Team[]> => {
   try {
     const response = await axios.get('https://free-nba.p.rapidapi.com/teams', apiOptions);
-    console.log(response, 'allTeams');
+    // console.log(response, 'allTeams');
     return response.data.data as Team[];
     
   } catch (error) {
@@ -34,7 +34,7 @@ export const getAllTeams = async (): Promise<Team[]> => {
 export const getSpecificTeam = async (teamId: number): Promise<Team | null> => {
   try {
     const response = await axios.get(`https://free-nba.p.rapidapi.com/teams/${teamId}`, apiOptions );
-    console.log(response, 'oiii');
+    console.log(response, '1');
     return response.data as Team;
     
     
@@ -42,6 +42,20 @@ export const getSpecificTeam = async (teamId: number): Promise<Team | null> => {
   } catch (error) {
     console.error(error);
     return null;
+  }
+};
+
+export const getAllPlayersSpecificTeam = async (): Promise<Team[]> => {
+  try {
+    const response = await axios.get(`https://free-nba.p.rapidapi.com/players`, apiOptions );
+    console.log(response, '2');
+    return response.data.data as Team[];
+    
+    
+
+  } catch (error) {
+    console.error(error);
+    return [];
   }
 };
 
