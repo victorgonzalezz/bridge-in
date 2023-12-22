@@ -5,9 +5,11 @@ export default function Teams() {
   return (
     <section>
       <AllTeams />
+      <div className='d-flex justify-content-center'>
         <Link to='/'>
         Back Home Page
         </Link>
+      </div>
     </section>
   )
 }

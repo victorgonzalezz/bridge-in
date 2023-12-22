@@ -6,14 +6,12 @@ import GameItem from './GameItem';
 
 const SpecificTeam: React.FC = () => {
   const { id } = useParams();
-  // console.log(id, 'oi')
   const [specificTeam, setSpecificTeam] = useState<Team | null>();
   const [games, setGames] = useState<Game[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
       const teamsData = await getSpecificTeam(Number(id));
-      // console.log(teamsData, 'e aí')
       setSpecificTeam(teamsData);
     };
 
@@ -35,10 +33,10 @@ const SpecificTeam: React.FC = () => {
     <div>
       <h2 className='bg-gradient'>Get Specific Team</h2>
       <div className='d-flex justify-content-center mt-4 mb-3'>
-        <h2>{specificTeam?.full_name}</h2>
+        <h2 className='bg-danger'>{specificTeam?.full_name}</h2>
       </div>
       <div className="d-flex container justify-content-center border border-black rounded">
-       <ul className="list-unstyled">
+       <ul className="list-unstyled bg-success">
           {games.map((game) => (
             <GameItem key={game.id} {...game} />
             ))}
