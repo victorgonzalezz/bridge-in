@@ -19,8 +19,7 @@ const AllGames: React.FC = () => {
   return (
     <div>
       <h2 className='d-flex justify-content-center mb-4 mt-5'>All Games</h2>
-      <div className='container d-flex justify-content-center border border-black rounded
-        '>
+      <div className='container d-flex justify-content-center border border-black rounded'>
           <ul className="list-unstyled mt-3">
             {games.map((game) => (
               <GameItem key={game.id} {...game} />

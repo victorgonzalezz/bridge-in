@@ -33,10 +33,10 @@ const SpecificTeam: React.FC = () => {
 
   return (
     <div>
-      <div className='d-flex'>
+      <div className='d-flex justify-content-center mt-4 mb-3'>
         <h2>{specificTeam?.full_name}</h2>
       </div>
-      <div className="d-flex row">
+      <div className="d-flex container justify-content-center border border-black rounded">
        <ul className="list-unstyled">
           {games.map((game) => (
             <GameItem key={game.id} {...game} />
