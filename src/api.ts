@@ -12,6 +12,15 @@ export interface Game {
   date: string;
 }
 
+export interface Player {
+  id: number;
+  first_name: string;
+  height_inches: number;
+  last_name: string;
+  position: string;
+}
+
+
 const apiOptions = {
   headers: {
     'X-RapidAPI-Key': '07ee434498mshcda066fadd7e086p1c1c29jsn10a3e9498fc7',
@@ -43,18 +52,47 @@ export const getSpecificTeam = async (teamId: number): Promise<Team | null> => {
   }
 };
 
-export const getAllPlayersSpecificTeam = async (): Promise<Team[]> => {
+export const getAllPlayers = async (): Promise<Player[]> => {
   try {
     const response = await axios.get(`https://free-nba.p.rapidapi.com/players`, apiOptions );
-    console.log(response, '5');
+    console.log(response, 'todos os jogadores?');
     
-    return response.data as Team[];
+    return response.data.data as Player[];
     
   } catch (error) {
     console.error(error);
     return [];
   }
 };
+
+export const getPlayersByTeam = async (id: number): Promise<Player[]> => {
+  try {
+    // Obter informações específicas sobre o time
+    const specificTeam = await getSpecificTeam(id);
+
+    if (specificTeam) {
+      // Obter todos os jogadores
+      const allPlayers = await getAllPlayers();
+
+      // Filtrar os jogadores do time específico
+      const playersInTeam = Array.isArray(allPlayers) ? allPlayers.filter((player) =>
+        player.id === id) : [];
+      
+      console.log(playersInTeam,'cheguei mesmo?');
+      
+
+      return playersInTeam;
+    } else {
+      // O time não foi encontrado
+      console.error(`Time com ID não encontrado.`);
+      return [];
+    }
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
+};
+
 
 export const getAllGames = async (): Promise<Game[]> => {
   try {

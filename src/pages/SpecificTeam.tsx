@@ -33,7 +33,8 @@ const SpecificTeam: React.FC = () => {
     <div>
       <h2 className='bg-gradient'>Get Specific Team</h2>
       <div className='d-flex justify-content-center mt-4 mb-3'>
-        <h2 className='bg-danger'>{specificTeam?.full_name}</h2>
+        {/* Rendered a specific Team */}
+        <h2>{specificTeam?.full_name}</h2>
       </div>
       <div className="d-flex container justify-content-center border border-black rounded">
        <ul className="list-unstyled bg-success">

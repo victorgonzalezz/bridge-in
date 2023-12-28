@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from 'react';
 import { getAllTeams } from '../api';
 import { Link } from 'react-router-dom';
-// import Profile from './Profile';
 
 interface Team {
   id: number;
@@ -28,7 +27,6 @@ const AllTeams: React.FC = () => {
   useEffect(() => {
     const fetchData = async () => {
       const teamsData = await getAllTeams(currentPage);
-      console.log(teamsData, 'All')
       setTeams(teamsData);
     };
 
@@ -58,8 +56,8 @@ const AllTeams: React.FC = () => {
             ))}
       </div>
       <div className='d-flex justify-content-between m-2'>
-        <button onClick={handlePrevious}>back</button>
-        <button onClick={handleNext}>next</button>
+        <button className='btn btn-dark border border-end-0' onClick={handlePrevious}>back</button>
+        <button  className='btn btn-dark border border-end-0' onClick={handleNext}>next</button>
       </div>
        
       </>
