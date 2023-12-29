@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import AllGames from "./AllGames";
+import AllGames from "../AllGames";
 
 export default function Games() {
   return (

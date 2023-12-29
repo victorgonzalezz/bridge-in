@@ -16,8 +16,10 @@ export interface Player {
   id: number;
   first_name: string;
   height_inches: number;
+  height_feet: number;
   last_name: string;
   position: string;
+  team: Team;
 }
 
 
@@ -41,7 +43,10 @@ export const getAllTeams = async (page: number): Promise<Team[]> => {
 
 export const getSpecificTeam = async (teamId: number): Promise<Team | null> => {
   try {
+    
     const response = await axios.get(`https://free-nba.p.rapidapi.com/teams/${teamId}`, apiOptions );
+    console.log(response, 'times?');
+    
     return response.data as Team;
     
     
@@ -54,9 +59,7 @@ export const getSpecificTeam = async (teamId: number): Promise<Team | null> => {
 
 export const getAllPlayers = async (): Promise<Player[]> => {
   try {
-    const response = await axios.get(`https://free-nba.p.rapidapi.com/players`, apiOptions );
-    console.log(response, 'todos os jogadores?');
-    
+    const response = await axios.get(`https://free-nba.p.rapidapi.com/players`, apiOptions );    
     return response.data.data as Player[];
     
   } catch (error) {
@@ -66,21 +69,18 @@ export const getAllPlayers = async (): Promise<Player[]> => {
 };
 
 export const getPlayersByTeam = async (id: number): Promise<Player[]> => {
+  console.log(id, 'id??');
+  
   try {
-    // Obter informações específicas sobre o time
-    const specificTeam = await getSpecificTeam(id);
-
-    if (specificTeam) {
-      // Obter todos os jogadores
-      const allPlayers = await getAllPlayers();
-
-      // Filtrar os jogadores do time específico
+    const allPlayers = await getAllPlayers();
+    console.log(allPlayers, 'all?');
+    
+    if (allPlayers) {
+  
       const playersInTeam = Array.isArray(allPlayers) ? allPlayers.filter((player) =>
-        player.id === id) : [];
+        player.team.id === id) : [];
       
-      console.log(playersInTeam,'cheguei mesmo?');
       
-
       return playersInTeam;
     } else {
       // O time não foi encontrado
@@ -92,7 +92,6 @@ export const getPlayersByTeam = async (id: number): Promise<Player[]> => {
     return [];
   }
 };
-
 
 export const getAllGames = async (): Promise<Game[]> => {
   try {

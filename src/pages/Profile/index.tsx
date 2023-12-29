@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Player, getPlayersByTeam } from '../api'; 
+import { Player, getPlayersByTeam } from '../../api';
 
 const Profile: React.FC = () => {
   //  const [teamId, ] = useState<number>(1)
@@ -8,7 +8,7 @@ const Profile: React.FC = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const profileData = await getPlayersByTeam();
+      const profileData = await getPlayersByTeam(1);
       setProfile(profileData);
     };
 

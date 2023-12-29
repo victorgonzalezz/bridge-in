@@ -1,8 +1,8 @@
 
 import React, { useEffect, useState } from 'react';
-import { Game, Team, getAllGamesSpecificTeam, getSpecificTeam } from '../api';
 import { useParams } from 'react-router-dom';
-import GameItem from './GameItem';
+import { Game, Team, getAllGamesSpecificTeam, getSpecificTeam } from '../../api';
+import GameItem from '../../components/GameItem';
 
 const SpecificTeam: React.FC = () => {
   const { id } = useParams();

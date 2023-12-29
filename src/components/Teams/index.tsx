@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import AllTeams from './AllTeams'
+import AllTeams from '../../pages/AllTeams'
 
 export default function Teams() {
   return (

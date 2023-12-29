@@ -1,5 +1,5 @@
-import { Game } from '../api'
 import { format } from 'date-fns'
+import { Game } from '../../api'
 
 export default function GameItem({ date, home_team: {full_name}, visitor_team: {full_name: visitorFullName}}: Game) {
 

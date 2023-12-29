@@ -1,24 +1,27 @@
 import React, { useEffect, useState } from 'react';
-import { Player, getPlayersByTeam } from '../api';
+import { useLocation } from 'react-router-dom';
+import { Player, getPlayersByTeam } from '../../api';
 
 
 const Players: React.FC = () => {
+  // console.log(teamId, '?')
   const [players, setPlayers] = useState<Player[]>([]);
-  // console.log(players, 'Sou o player') pega TODOS os jogadores
+  const { state } = useLocation();
   
   useEffect(() => {
     const fetchData = async () => {
-      const teamsData = await getPlayersByTeam(1);
-      setPlayers(teamsData);
+      if (state) {
+        const teamsData = await getPlayersByTeam(state);
+        setPlayers(teamsData);
+      }
     };
 
  fetchData()
-  }, []);
+  }, [state]);
 
   return (
     <>
       <div className="d-flex row m-2">
-          <h1>Cheguei?</h1> 
         <ul className="list-unstyled">
           {players.map((player) => (
             <li key={player.id}>
@@ -29,7 +32,10 @@ const Players: React.FC = () => {
                 <strong>Posição:</strong> {player.position}
               </p>
               <p>
-                <strong>Altura:</strong> {player.height_inches}
+                <strong>Pés de altura:</strong> {player.height_inches}
+              </p>
+              <p>
+                <strong>Polegadas de Altura:</strong> {player.height_feet}
               </p>
             </li>
           ))}

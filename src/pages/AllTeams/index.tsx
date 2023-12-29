@@ -1,7 +1,7 @@
 
 import React, { useEffect, useState } from 'react';
-import { getAllTeams } from '../api';
 import { Link } from 'react-router-dom';
+import { getAllTeams } from '../../api';
 
 interface Team {
   id: number;
@@ -49,7 +49,7 @@ const AllTeams: React.FC = () => {
                 </div>
                 {/* Above, render all Teams  */}
                 <div className='d-flex gap-3'>
-                  <Link className='text-decoration-none' to={'/teams/:id/players'}>Profile</Link>
+                  <Link className='text-decoration-none' to={`/teams/players`} state={team.id}>Profile</Link>
                   <Link className='text-decoration-none' to={''}>Stats</Link>
                 </div>
               </div>

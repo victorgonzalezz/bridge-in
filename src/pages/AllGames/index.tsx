@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Game, getAllGames } from '../api'; 
-import GameItem from './GameItem';
+import { Game, getAllGames } from '../../api';
+import GameItem from '../../components/GameItem';
 
 
 const AllGames: React.FC = () => {

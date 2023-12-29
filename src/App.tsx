@@ -2,13 +2,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Players from './pages/Players';
 import Header from './components/Header';
 import Games from './pages/Games';
 // import AllPlayers from './pages/AllPlayers';
-import Teams from './pages/Teams';
+import Teams from './components/Teams';
 import Home from './components/Home';
 import SpecificTeam from './pages/SpecificTeam';
+import Players from './components/Players';
 
 const App: React.FC = () => {
   return (
@@ -20,7 +20,7 @@ const App: React.FC = () => {
           {/* exercicio A */}
           <Route path="/teams" element={<Teams />} />
           {/* exercicio  B*/}
-          <Route path="/teams/:id/players" element={<Players />} />
+          <Route path="/teams/players" element={<Players />} />
 
           {/* exercicio  C*/}
 
