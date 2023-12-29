@@ -77,7 +77,10 @@ export const getPlayersByTeam = async (id: number): Promise<Player[]> => {
   
       const playersInTeam = Array.isArray(allPlayers) ? allPlayers.filter((player) =>
         player.team.id === id) : [];
-     console.log(playersInTeam, 'O que somos?');
+      console.log(playersInTeam, 'O que somos?');
+      //Quando clicamos em profile, vem o jogador
+      //to time especifico, mas não todos.
+      //Algumas props estão a vir como 'null'
       
       
       
