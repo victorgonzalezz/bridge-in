@@ -4,7 +4,6 @@ import { Player, getPlayersByTeam } from '../../api';
 
 
 const Players: React.FC = () => {
-  // console.log(teamId, '?')
   const [players, setPlayers] = useState<Player[]>([]);
   const { state } = useLocation();
   

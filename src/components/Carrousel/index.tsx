@@ -7,7 +7,7 @@ import Nba05 from '../../assets/nba-05.webp'
 export default function Carrousel() {
   return (
     <div id="carouselExample" className="carousel slide container">
-      <div className="carousel-inner">
+      <div className="carousel-inner mt-5">
         <div className="carousel-item active">
           <img src={Nba01} className="d-block w-100" alt="Nba Picture Number One" />
         </div>

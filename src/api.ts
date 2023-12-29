@@ -68,9 +68,7 @@ export const getAllPlayers = async (): Promise<Player[]> => {
   }
 };
 
-export const getPlayersByTeam = async (id: number): Promise<Player[]> => {
-  console.log(id, 'id??');
-  
+export const getPlayersByTeam = async (id: number): Promise<Player[]> => {  
   try {
     const allPlayers = await getAllPlayers();
     console.log(allPlayers, 'all?');
@@ -79,11 +77,12 @@ export const getPlayersByTeam = async (id: number): Promise<Player[]> => {
   
       const playersInTeam = Array.isArray(allPlayers) ? allPlayers.filter((player) =>
         player.team.id === id) : [];
+     console.log(playersInTeam, 'O que somos?');
+      
       
       
       return playersInTeam;
     } else {
-      // O time não foi encontrado
       console.error(`Time com ID não encontrado.`);
       return [];
     }
