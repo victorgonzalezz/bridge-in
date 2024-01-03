@@ -57,9 +57,11 @@ export const getSpecificTeam = async (teamId: number): Promise<Team | null> => {
   }
 };
 
-export const getAllPlayers = async (): Promise<Player[]> => {
+export const getAllPlayers = async (page: number): Promise<Player[]> => {
   try {
-    const response = await axios.get(`https://free-nba.p.rapidapi.com/players`, apiOptions );    
+    const response = await axios.get(`https://free-nba.p.rapidapi.com/players`, {params:{ page }, ...apiOptions});
+    // console.log(response, '1')
+    
     return response.data.data as Player[];
     
   } catch (error) {
@@ -68,27 +70,27 @@ export const getAllPlayers = async (): Promise<Player[]> => {
   }
 };
 
-export const getPlayersByTeam = async (id: number): Promise<Player[]> => {  
+export const getPlayersByTeam = async (id: number, totalPages: number = 25): Promise<Player[]> => {  
+   const promises = [];
+
+  for (let page = 1; page <= totalPages; page++) {
+    promises.push(axios.get(`https://free-nba.p.rapidapi.com/players`, {params:{ page }, ...apiOptions}).then(response => response.data));
+  }
   try {
-    const allPlayers = await getAllPlayers();
-    console.log(allPlayers, 'all?');
     
-    if (allPlayers) {
+
+
+    const allResponses = await Promise.all(promises);
+    const allPlayers = allResponses.flat(); // Flatten the array of arrays
+
+    const teamPlayers = allPlayers.filter(player => player.team.id === id);
+
+    // Do something with the team players
+    console.log(teamPlayers);
   
-      const playersInTeam = Array.isArray(allPlayers) ? allPlayers.filter((player) =>
-        player.team.id === id) : [];
-      console.log(playersInTeam, 'O que somos?');
-      //Quando clicamos em profile, vem o jogador
-      //to time especifico, mas não todos.
-      //Algumas props estão a vir como 'null'
-      
-      
-      
-      return playersInTeam;
-    } else {
-      console.error(`Time com ID não encontrado.`);
-      return [];
-    }
+    return teamPlayers;
+
+ 
   } catch (error) {
     console.error(error);
     return [];

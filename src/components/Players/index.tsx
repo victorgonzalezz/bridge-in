@@ -4,19 +4,20 @@ import { Player, getPlayersByTeam } from '../../api';
 
 
 const Players: React.FC = () => {
-  const [players, setPlayers] = useState<Player[]>([]);
+    const [players, setPlayers] = useState<Player[]>([]);
   const { state } = useLocation();
-  
-  useEffect(() => {
-    const fetchData = async () => {
-      if (state) {
-        const teamsData = await getPlayersByTeam(state);
-        setPlayers(teamsData);
-      }
-    };
+  // console.log(state, '5')
+    
+    useEffect(() => {
+      const fetchData = async () => {
+        if (state) {
+          const teamsData = await getPlayersByTeam(state);
+          setPlayers(teamsData);
+        }
+      };
 
- fetchData()
-  }, [state]);
+  fetchData()
+    }, [state]);
 
   return (
     <>
@@ -39,9 +40,7 @@ const Players: React.FC = () => {
             </li>
           ))}
         </ul>
-
       </div>
-      {/* <div><Profile /></div> */}
       </>
     );
   };
