@@ -1,18 +1,17 @@
-import React from 'react';
-import Navbar from '../Navbar';
-import Carrousel from '../Carrousel';
+import React from "react";
+import Navbar from "../Navbar";
+import Carrousel from "../Carrousel";
 
 const Home: React.FC = () => {
   return (
     <>
-    <Navbar />
-    <section>
+      <Navbar />
+      <section>
         <main>
           <Carrousel />
         </main>
-    </section>
+      </section>
     </>
-    
   );
 };
 

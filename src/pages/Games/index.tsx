@@ -5,9 +5,7 @@ export default function Games() {
   return (
     <section>
       <AllGames />
-      <Link to='/'>
-        Back Home Page
-      </Link>
+      <Link to="/">Back Home Page</Link>
     </section>
-  )
+  );
 }

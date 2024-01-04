@@ -1,23 +1,22 @@
-import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
-import { Player, getPlayersByTeam } from '../../api';
-
+import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
+import { Player, getPlayersByTeam } from "../../api";
 
 const Players: React.FC = () => {
-    const [players, setPlayers] = useState<Player[]>([]);
+  const [players, setPlayers] = useState<Player[]>([]);
   const { state } = useLocation();
   // console.log(state, '5')
-    
-    useEffect(() => {
-      const fetchData = async () => {
-        if (state) {
-          const teamsData = await getPlayersByTeam(state);
-          setPlayers(teamsData);
-        }
-      };
 
-  fetchData()
-    }, [state]);
+  useEffect(() => {
+    const fetchData = async () => {
+      if (state) {
+        const teamsData = await getPlayersByTeam(state);
+        setPlayers(teamsData);
+      }
+    };
+
+    fetchData();
+  }, [state]);
 
   return (
     <>
@@ -41,8 +40,8 @@ const Players: React.FC = () => {
           ))}
         </ul>
       </div>
-      </>
-    );
-  };
+    </>
+  );
+};
 
 export default Players;
