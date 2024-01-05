@@ -80,7 +80,6 @@ export const getPlayersByTeam = async (id: number): Promise<Player[]> => {
       console.log(playersInTeam, 'O que somos?');
       //Quando clicamos em profile, vem o jogador
       //to time especifico, mas não todos.
-      //Algumas props estão a vir como 'null'
       
       
       
@@ -108,9 +107,7 @@ export const getAllGames = async (): Promise<Game[]> => {
   }
 };
 
-export const getAllGamesSpecificTeam = async (
-  idTeam: number
-): Promise<Game[]> => {
+export const getAllGamesSpecificTeam = async (idTeam: number): Promise<Game[]> => {
   try {
     const response = await axios.get("https://free-nba.p.rapidapi.com/games", {
       ...apiOptions,

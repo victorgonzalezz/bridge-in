@@ -19,7 +19,7 @@ const AllGames: React.FC = () => {
     <div>
       <Link to="/" className="d-flex justify-content-end m-1">Back Home Page</Link>
       <h2 className="d-flex justify-content-center mb-4 mt-5">All Games</h2>
-      <div className="container d-flex justify-content-center border border-black rounded">
+      <div className="container d-flex justify-content-center border border-black rounded mb-4">
         <ul className="list-unstyled mt-3">
           {games.map((game) => (
             <GameItem key={game.id} {...game} />
