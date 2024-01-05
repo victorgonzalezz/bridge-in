@@ -15,8 +15,6 @@ export interface Game {
 export interface Player {
   id: number;
   first_name: string;
-  height_inches: number;
-  height_feet: number;
   last_name: string;
   position: string;
   team: Team;
@@ -48,7 +46,6 @@ export const getSpecificTeam = async (teamId: number): Promise<Team | null> => {
       `https://free-nba.p.rapidapi.com/teams/${teamId}`,
       apiOptions
     );
-    console.log(response, "times?");
 
     return response.data as Team;
   } catch (error) {
@@ -63,7 +60,6 @@ export const getAllPlayers = async (page: number): Promise<Player[]> => {
       `https://free-nba.p.rapidapi.com/players`,
       { params: { page }, ...apiOptions }
     );
-    // console.log(response, '1')
 
     return response.data.data as Player[];
   } catch (error) {
@@ -72,32 +68,27 @@ export const getAllPlayers = async (page: number): Promise<Player[]> => {
   }
 };
 
-export const getPlayersByTeam = async (
-  id: number,
-  totalPages: number = 25
-): Promise<Player[]> => {
-  const promises = [];
-
-  for (let page = 1; page <= totalPages; page++) {
-    promises.push(
-      axios
-        .get(`https://free-nba.p.rapidapi.com/players`, {
-          params: { page },
-          ...apiOptions,
-        })
-        .then((response) => response.data)
-    );
-  }
+export const getPlayersByTeam = async (id: number): Promise<Player[]> => {  
   try {
-    const allResponses = await Promise.all(promises);
-    const allPlayers = allResponses.flat(); // Flatten the array of arrays
-
-    const teamPlayers = allPlayers.filter((player) => player.team.id === id);
-
-    // Do something with the team players
-    console.log(teamPlayers);
-
-    return teamPlayers;
+    const allPlayers = await getAllPlayers(1);
+    console.log(allPlayers, 'all?');
+    
+    if (allPlayers) {
+  
+      const playersInTeam = Array.isArray(allPlayers) ? allPlayers.filter((player) =>
+        player.team.id === id) : [];
+      console.log(playersInTeam, 'O que somos?');
+      //Quando clicamos em profile, vem o jogador
+      //to time especifico, mas não todos.
+      //Algumas props estão a vir como 'null'
+      
+      
+      
+      return playersInTeam;
+    } else {
+      console.error(`Time com ID não encontrado.`);
+      return [];
+    }
   } catch (error) {
     console.error(error);
     return [];

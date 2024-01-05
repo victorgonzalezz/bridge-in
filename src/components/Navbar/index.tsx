@@ -24,7 +24,7 @@ const Navbar: React.FC = () => {
             </li>
           </ul>
         </div>
-        <div className="btn-group">
+        {/* <div className="btn-group">
           <button type="button" className="btn border border-end-0">
             Players
           </button>
@@ -41,7 +41,7 @@ const Navbar: React.FC = () => {
               </a>
             </li>
           </ul>
-        </div>
+        </div> */}
         <div className="btn-group">
           <button type="button" className="btn btn border border-end-0">
             Games

@@ -5,6 +5,7 @@ import { Player, getPlayersByTeam } from "../../api";
 const Players: React.FC = () => {
   const [players, setPlayers] = useState<Player[]>([]);
   const { state } = useLocation();
+  const teamName = players.length > 0 ? players[0].team.full_name : '';
   // console.log(state, '5')
 
   useEffect(() => {
@@ -12,6 +13,8 @@ const Players: React.FC = () => {
       if (state) {
         const teamsData = await getPlayersByTeam(state);
         setPlayers(teamsData);
+
+
       }
     };
 
@@ -20,26 +23,21 @@ const Players: React.FC = () => {
 
   return (
     <>
-      <div className="d-flex row m-2">
-        <ul className="list-unstyled">
-          {players.map((player) => (
-            <li key={player.id}>
-              <p>
-                <strong>Nome:</strong> {player.first_name} {player.last_name}
-              </p>
-              <p>
-                <strong>Posição:</strong> {player.position}
-              </p>
-              <p>
-                <strong>Pés de altura:</strong> {player.height_inches}
-              </p>
-              <p>
-                <strong>Polegadas de Altura:</strong> {player.height_feet}
-              </p>
-            </li>
-          ))}
-        </ul>
-      </div>
+      <h2 className="d-flex justify-content-center">{teamName}</h2>
+        <div className="d-flex flex-column m-2">
+          <ul className="list-group">
+              {players.map((player) => (
+                <li key={player.id} className="list-group-item list-group-item-light border my-1">
+                  <p className="mb-1">
+                    <strong>Nome:</strong> {player.first_name} {player.last_name}
+                  </p>
+                  <p className="mb-1">
+                    <strong>Posicão:</strong> {player.position}
+                  </p>
+                </li>
+              ))}
+          </ul>
+        </div>
     </>
   );
 };
