@@ -34,6 +34,7 @@ const AllTeams: React.FC = () => {
 
   return (
     <>
+      <Link to="/" className="d-flex justify-content-end m-1">Back Home Page</Link>
       <h2 className="d-flex justify-content-center mt-4 mb-3">All Teams</h2>
       <div className="d-flex row m-2">
         {teams.map((team) => (
