@@ -5,7 +5,7 @@ import './style.css'
 const Navbar: React.FC = () => {
   return (
     <nav className="navbar navbar-expand-md d-flex justify-content-center">
-      <div className="navbar-nav mr-auto d-flex gap-4">
+      <div className="responsive navbar-nav mr-auto d-flex gap-4">
         <NavLink to="/"></NavLink>
         <div className="btn-group">
           <button type="button" className="btn border border-end-0">

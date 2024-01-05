@@ -1,6 +1,13 @@
 @media screen and (min-width: 320px) and (max-width: 580px) {
-    .container {
-        padding: 15px 0px 20.01px 0px;
-        gap: 15px;
-}
+    .responsive {
+        flex-direction: row;
+    }
+
+    .navbar {
+        justify-content: flex-start !important;
+    }
+
+    .navbar-nav .dropdown-menu {
+        position: absolute;
+    }
 }
