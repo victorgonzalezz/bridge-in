@@ -2,6 +2,7 @@ import Nba02 from "../../assets/nba-02.jpeg";
 import Nba03 from "../../assets/nba-03.jpg";
 import Nba04 from "../../assets/nba-04.jpg";
 import Nba05 from "../../assets/nba-05.jpg";
+import './style.css'
 
 const images = [Nba02, Nba03, Nba04, Nba05];
 export default function Carrousel() {
@@ -11,7 +12,7 @@ export default function Carrousel() {
       <div className="carousel-inner mt-5">
         {images.map((image, index) => (
           <div key={index} className={`carousel-item ${index === 0 ? 'active' : ''}`}>
-            <img src={image} className="d-block w-100" alt={`Nba Picture Number ${index + 1}`} />
+            <img src={image} className="image d-block w-100" alt={`Nba Picture Number ${index + 1}`} />
           </div>
         ))}
       </div>

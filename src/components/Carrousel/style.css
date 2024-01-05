@@ -1,0 +1,13 @@
+@media screen and (min-width: 320px) and (max-width: 580px) {
+    #carouselExample {
+     width: 90% !important;
+    } 
+    
+    .image {
+        width: 100%;
+    }
+
+    .carousel-inner {
+        margin-top: 0 !important;
+    }
+}
