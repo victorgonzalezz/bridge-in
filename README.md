@@ -1,13 +1,13 @@
 # Bridge In
 
-## Tecnologias Utilizadas
+## Technologies Used
 
 - React
 - React Router Dom
 - Bootstrap
 - TypeScript
 
-## Instalação e Execução
+## Installation and Execution
 
 ### Required
 
